@@ -331,6 +331,7 @@ class CustomersController extends Controller{
             $customer->status = 1;
             
             if($customer->save()){
+                Auth::loginUsingId($user->id);
                 //$this->adminMail($request->input("email"), $request->input("name"), $password);
                 Session::flash('success', 'Congrats, your account has been created successfully');
                 return back();
