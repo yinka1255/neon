@@ -288,7 +288,7 @@ class CustomersController extends Controller{
             $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
                         ->where("customers.user_id", $user->id)
                         ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
-             return view('/')->with(["loggedInUser"=>$loggedInUser]);
+             return view('/terms')->with(["loggedInUser"=>$loggedInUser]);
         }else{
             return view('/terms');
         }
@@ -299,7 +299,7 @@ class CustomersController extends Controller{
             $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
                         ->where("customers.user_id", $user->id)
                         ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
-             return view('/')->with(["loggedInUser"=>$loggedInUser]);
+             return view('/policy')->with(["loggedInUser"=>$loggedInUser]);
         }else{
             return view('/policy');
         }
@@ -310,7 +310,7 @@ class CustomersController extends Controller{
             $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
                         ->where("customers.user_id", $user->id)
                         ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
-             return view('/')->with(["loggedInUser"=>$loggedInUser]);
+             return view('/contact')->with(["loggedInUser"=>$loggedInUser]);
         }else{
             return view('/contact');
         }
