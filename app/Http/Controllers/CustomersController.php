@@ -138,6 +138,7 @@ class CustomersController extends Controller{
             ->select("orders.*",  "order_details.selling_price", "order_details.qty", "products.name", "customers.name as customer_name", "customers.phone as customer_phone", "customers.email as customer_email")
             ->where("orders.id", $order->id)
             ->get();
+            Cart::destroy();
             $this->mailReceipt($order);
             Session::flash('success2', 'Order completed succssfully... Our delivery team will contact you shortly');
             return redirect('/');
