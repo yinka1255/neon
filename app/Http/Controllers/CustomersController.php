@@ -135,7 +135,7 @@ class CustomersController extends Controller{
             $order = Order::leftjoin("order_details", "orders.id", "=", "order_details.order_id")
             ->join("products", "products.id", "=", "order_details.product_id")
             ->join("customers", "customers.id", "=", "orders.customer_id")
-            ->select("orders.*",  "order_details.selling_price", "order_details.qty", "products.name", "customers.name as customer_name", "customers.phone as customer_phone")
+            ->select("orders.*",  "order_details.selling_price", "order_details.qty", "products.name", "customers.name as customer_name", "customers.phone as customer_phone", "customers.email as customer_email")
             ->where("orders.id", $order->id)
             ->get();
             $this->mailReceipt($order);
@@ -148,14 +148,13 @@ class CustomersController extends Controller{
     }
 
     public function mailReceipt($order){
-        $sender = 'info@cashluck.com.ng';
         $data = [
-            'email'=> $order->customer_email,
+            'email'=> $order[0]->customer_email,
             'order'=> $order,
             'date'=>date('Y-m-d')
         ];
         Mail::send('receipt_mail', $data, function($message) use($data){
-            $message->from($sender, 'Neon');
+            $message->from('info@cashluck.com.ng', 'Neon');
             $message->SMTPDebug = 4; 
             $message->to($data['email']);
             $message->subject('Neon purchase receipt');
@@ -221,12 +220,12 @@ class CustomersController extends Controller{
         ->select("products.*", "inventories.selling_price", "inventories.id as inventory_id")
         ->where("products.id", $product_id)->first();
         Cart::add($product->id, $product->name, 1, $product->selling_price, ['image' => $product->image]);
-        Session::flash('success1', $product->name.' added to cart');
+        Session::flash('success', $product->name.' added to cart');
         return back();
     }
     public function removeCart($rowId){
         Cart::remove($rowId);
-        Session::flash('success', 'Item removed from cart');
+        Session::flash('success1', 'Item removed from cart');
         return back();
     }
 
@@ -236,11 +235,27 @@ class CustomersController extends Controller{
     }
 
     public function cart(){
-        return view('cart');
+        $user = Auth::user();
+        if($user){
+            $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
+            ->where("customers.user_id", $user->id)
+            ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
+            return view('cart')->with(["loggedInUser"=>$loggedInUser]);
+        }else{
+            return view('cart');
+        }
     }
 
     public function checkout(){
+        $user = Auth::user();
+        if($user){
+            $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
+            ->where("customers.user_id", $user->id)
+            ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
+            return view('checkout')->with(["loggedInUser"=>$loggedInUser]);
+        }else{
         return view('checkout');
+        }
     }
 
     public function about(){
@@ -249,7 +264,7 @@ class CustomersController extends Controller{
             $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
                         ->where("customers.user_id", $user->id)
                         ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
-             return view('/')->with(["loggedInUser"=>$loggedInUser]);
+             return view('/about')->with(["loggedInUser"=>$loggedInUser]);
         }else{
             return view('/about');
         }
@@ -261,7 +276,7 @@ class CustomersController extends Controller{
             $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
                         ->where("customers.user_id", $user->id)
                         ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
-             return view('/')->with(["loggedInUser"=>$loggedInUser]);
+             return view('/faqs')->with(["loggedInUser"=>$loggedInUser]);
         }else{
             return view('/faqs');
         }
