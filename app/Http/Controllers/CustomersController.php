@@ -314,4 +314,34 @@ class CustomersController extends Controller{
             return view('/contact');
         }
     }
+
+    public function customerRegister(Request $request){
+        $user = new User;
+        $user->email = $request->input("email");
+        $password = $request->input("password");
+        $user->password = bcrypt($password);
+        $user->type = 1;
+        $user->status = 1;
+        if($user->save()){
+            $customer = new Customer;
+            $customer->user_id = $user->id;
+            $customer->name = $request->input("name");
+            $customer->phone = $request->input("phone");
+            $customer->email = $request->input("email");
+            $customer->status = 1;
+            
+            if($customer->save()){
+                //$this->adminMail($request->input("email"), $request->input("name"), $password);
+                Session::flash('success', 'Congrats, your account has been created successfully');
+                return back();
+            }else{
+                Session::flash('error', 'Sorry! An error occured while trying to create account');
+                return back();
+            }    
+        }else{
+            Session::flash('error', 'Sorry! An error occured while trying to create account');
+                return back();
+        }    
+    }  
+
 }
