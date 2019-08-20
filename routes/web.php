@@ -20,6 +20,7 @@ Route::get('/logout', 'LoginsController@logout');
 
 Route::post('/authenticate', 'LoginsController@authenticate');
 Route::post('/create', 'UsersController@customerRegister');
+Route::post('/register_customer', 'UsersController@customerRegister');
 
 Route::get('/register', function () {
     return view('register');
