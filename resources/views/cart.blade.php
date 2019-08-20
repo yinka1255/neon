@@ -43,21 +43,21 @@
           <div class="col-xs-12 col-sm-12 col-md-3">
             <a class="menuzord-brand pull-left flip sm-pull-center mb-15" href="{{url('/')}}"><img src="{{asset('public/admin/images/logo-light.png')}}" alt="Neon logo"></a>
           </div>
-          <div class="col-xs-12 col-sm-4 col-md-3">
+          <div class="hidden-xs hidden-sm col-md-3">
             <div class="widget no-border sm-text-center mt-10 mb-10 m-0">
               <i class="fa fa-envelope text-theme-colored font-32 mt-5 mr-sm-0 sm-display-block pull-left flip sm-pull-none"></i>
               <a href="#" class="font-12 text-gray text-uppercase">Mail Us Today</a>
               <h5 class="font-13 text-black m-0"> info@neon.com</h5>
             </div>
           </div>
-          <div class="col-xs-12 col-sm-4 col-md-3">
+          <div class="hidden-xs hidden-sm col-md-3">
             <div class="widget no-border sm-text-center mt-10 mb-10 m-0">
               <i class="fa fa-phone-square text-theme-colored font-32 mt-5 mr-sm-0 sm-display-block pull-left flip sm-pull-none"></i>
               <a href="#" class="font-12 text-gray text-uppercase">Call us for more details</a>
               <h5 class="font-13 text-black m-0"> 08189862968</h5>
             </div>
           </div>
-          <div class="col-xs-12 col-sm-4 col-md-3">
+          <div class="hidden-xs hidden-sm col-md-3">
             <div class="widget no-border sm-text-center mt-10 mb-10 m-0">
               <i class="fa fa-building-o text-theme-colored font-32 mt-5 mr-sm-0 sm-display-block pull-left flip sm-pull-none"></i>
               <a href="#" class="font-12 text-gray text-uppercase">Company Location</a>
