@@ -147,7 +147,7 @@
                   data-splitin="none" 
                   data-splitout="none" 
                   data-responsive_offset="on" 
-                  style="z-index: 6; min-width: 600px; max-width: 600px; white-space: normal;"><span class="text-theme-colored">Original drugs?</span> You can <span class="text-theme-color-2">Always</span> Count on us.
+                  style="z-index: 6; min-width: 600px; max-width: 600px; white-space: normal;"><span class="text-theme-colored">Original drugs?</span> <span class="text-theme-color-2">Always</span> Count on us.
                 </div>
                 <!-- LAYER NR. 3 -->
                 <div class="tp-caption tp-resizeme text-white rs-parallaxlevel-0" 
