@@ -1,0 +1,309 @@
+/*
+@Author: ThemeMascot
+@URL: http://ThemeMascot.com
+
+This is the file where you can add your custom styles to change the look of the
+theme. But don't modify style-main.css file.
+
+*/
+
+/* Your custom css codes start here: */
+
+.modalH3{
+    text-align: center;
+    color: #444;
+    margin-top: 17px;
+}
+.loginForm{
+    margin-top: 20px;
+}
+.login-label{
+    font-weight: 200;
+}
+
+
+.pb-5 {
+    padding-bottom: 5px !important
+}
+.modal.modal-border-transparent .modal-content {
+    border: 5px solid rgba(255, 255, 255, 0.4);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.modal.modal-login .modal-content {
+    width: 380px;
+    margin: 0 auto;
+    position: relativel
+}
+
+.modal.modal-login .modal-content h4 {
+    margin: -15px -15px 30px;
+    text-transform: uppercase;
+    text-align: center;
+    background: #F2F2F2;
+    line-height: 1;
+    padding: 15px 10px 13px;
+    letter-spacing: 1px;
+}
+
+.modal.modal-login .modal-content .form-group {
+    margin: 0 0 1px;
+    ;
+}
+
+.modal.modal-login .modal-content .form-control {
+    height: 40px;
+    border-color: #E5E5E5;
+    background: #E5E5E5;
+}
+
+.modal.modal-login .form-control::-moz-placeholder {}
+
+.modal.modal-login .form-control:-ms-input-placeholder {}
+
+.modal.modal-login .form-control::-webkit-input-placeholder {}
+
+.modal.modal-login .modal-footer {
+    border-top: 1px solid #E5E5E5;
+}
+
+.modal.modal-login .btn-link {
+    padding: 0;
+    line-height: 1;
+    font-size: 12px;
+    color: #314C82;
+    font-weight: 700;
+    margin-top: 1px;
+}
+
+.modal.modal-login .btn-link:hover {
+    color: #6382C2;
+}
+
+.modal .modal-content .btn-close {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    z-index: 1052;
+    font-size: 12px;
+}
+
+.modal-seperator {
+    border-bottom: 1px solid #E5E5E5;
+    text-align: center;
+    margin: 25px 0 40px;
+    margin-left: -15px;
+    margin-right: -15px;
+    position: relative;
+}
+
+.modal-seperator span {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #E5E5E5;
+    border-radius: 50%;
+    margin: 0 auto;
+    line-height: 38px;
+    display: block;
+    margin-bottom: -20px;
+    background: #FFF;
+    font-weight: 700;
+    font-family: 'thaisans', sans-serif;
+}
+
+.login-modal-tab-wrapper {}
+
+ul.login-modal-tab-nav {
+    background: #EAEAEA;
+    padding: 0;
+    margin: 0;
+}
+
+ul.login-modal-tab-nav li {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+ul.login-modal-tab-nav li a {
+    display: block;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #565656;
+}
+
+ul.login-modal-tab-nav li.active a {
+    background: #FFF;
+}
+
+ul.login-modal-tab-nav li a:hover {
+    color: #489FF0;
+}
+
+.btn.btn-facebook {
+    background: #3b5998;
+    color: #FFF;
+}
+
+.btn.btn-facebook:hover {
+    opacity: 0.8;
+}
+
+.login-modal-tab-wrapper .form-control {
+    background: #FFF;
+    height: 40px;
+}
+
+@media only screen and (max-width: 1199px) {}
+
+@media only screen and (max-width: 991px) {}
+
+@media only screen and (max-width: 767px) {}
+
+@media (max-width: 479px) {
+    .modal.modal-login .modal-content {
+        width: 100%;
+    }
+}
+
+
+/**
+ * Social Share
+ */
+
+ul.social-share-sm {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+    float: left
+}
+
+ul.social-share-sm li {
+    display: inline-block;
+    margin: 0 0 5px
+}
+
+ul.social-share-sm li span,
+ul.social-share-sm li a {
+    position: relative;
+    display: inline-block;
+    padding-right: 10px;
+    margin-right: 10px
+}
+
+ul.social-share-sm:after,
+ul.social-share-sm li span:after,
+ul.social-share-sm li a:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 1px;
+    width: 1px;
+    height: 13px;
+    background: #E3E3E3
+}
+
+ul.social-share-sm.pull-right {
+    margin-right: -10px
+}
+
+ul.social-share-sm.pull-right:after {
+    display: none
+}
+
+ul.social-share-sm li a:after {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    top: 6px;
+    right: -3px
+}
+
+ul.social-share-sm li:last-child a {
+    margin-right: 0
+}
+
+ul.social-share-sm li:last-child a:after {
+    display: none
+}
+
+ul.social-share-sm li a {
+    font-weight: 400;
+    color: #999
+}
+
+ul.social-share-sm li a:hover {
+    color: #FFBF00
+}
+
+ul.social-share-sm.for-useful {
+    float: right
+}
+
+ul.social-share-sm.for-useful:after {
+    display: none
+}
+
+ul.social-share-sm.for-useful li:not(:last-child) {
+    margin-right: 10px
+}
+
+ul.social-share-sm.for-useful li span {
+    margin-right: 0
+}
+
+ul.social-share-sm.for-useful li a {
+    margin-right: 0;
+    padding-right: 0
+}
+
+ul.social-share-sm.for-useful li a:after {
+    display: none
+}
+
+.review-list ul.social-share-sm {
+    margin-top: 20px
+}
+
+a, a:visited, a:focus, a:active, a:hover {
+    text-decoration: none;
+    outline: none;
+}
+.btn-gplus {
+    background: #dd4b39;
+    color: #fff;
+}
+
+.modal-content h4 {
+    margin: -15px -15px 30px;
+    text-transform: uppercase;
+    text-align: center;
+    background: #F2F2F2;
+    line-height: 1;
+    padding: 15px 10px 13px;
+    letter-spacing: 1px;
+}
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child, .h1:first-child, .h2:first-child, .h3:first-child, .h4:first-child, .h5:first-child, .h6:first-child {
+    margin-top: 0;
+}
+h4 {
+    font-size: 18px;
+    margin-top: -15px;
+}
+.modal-content{
+    border-radius: 0 !important;
+    border: 3px solid #999;
+    width: 380px;
+}
+#login_lost_btn{
+    padding: 0 !important;
+}
+#login_register_btn{
+    color: #314C82;
+}
+.lead{
+    text-align: justify;
+}
