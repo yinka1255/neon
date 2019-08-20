@@ -368,7 +368,7 @@
             
               <div class="modal-body pb-5">
             
-                <h4>Sign-up</h4>
+                <h4>Sign-up</h4>{{ csrf_field() }}
               
                 <a href="{{url('redirect')}}" class="btn btn-gplus btn-block">Sign-in with Google</a>
                 
@@ -430,7 +430,7 @@
             
               <div class="modal-body pb-5">
             
-                <h4>Retrieve password</h4>
+                <h4>Retrieve password</h4>{{ csrf_field() }}
               
                 <div class="form-group"> 
                   <input id="forgot_username" class="form-control" name="email" placeholder="Email" type="email"> 
