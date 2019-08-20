@@ -316,11 +316,16 @@ class CustomersController extends Controller{
     }
 
     public function customerRegister(Request $request){
+        $check = User::where("email", $request->input("email"))->first();
+        if($check != null){
+            Session::flash('error', 'Sorry! An account with the provided email already exist');
+            return back();
+        }
         $user = new User;
         $user->email = $request->input("email");
         $password = $request->input("password");
         $user->password = bcrypt($password);
-        $user->type = 1;
+        $user->type = 3;
         $user->status = 1;
         if($user->save()){
             $customer = new Customer;
