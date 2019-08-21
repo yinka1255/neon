@@ -81,7 +81,7 @@
               
             </ul>
             <div class="pull-right sm-pull-none mb-sm-15">
-              <a class="btn btn-colored btn-flat btn-danger mt-15 mt-sm-10 pt-10 pb-10" href="{{url('cart')}}" style="border-radius: 18px;padding: 8px 15px;""><i class="fa fa-shopping-cart mr-5"></i> {{Cart::content()->count()}}</a>
+              <a class="btn btn-colored btn-flat btn-danger mt-15 mt-sm-10 pt-10 pb-10" href="{{url('cart')}}" style="border-radius: 18px;padding: 8px 15px;"><i class="fa fa-shopping-cart mr-5"></i> {{Cart::content()->count()}}</a>
               @if(Auth::check())
               <a href="{{url('logout')}}" class="btn btn-colored btn-flat btn-theme-colored mt-15 mt-sm-10 pt-10 pb-10" >Logout</a>
               @else
