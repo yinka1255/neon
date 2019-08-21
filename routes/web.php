@@ -70,6 +70,8 @@ Route::get('/admin/orders', 'AdminsController@orders');
 Route::get('/admin/order_status/{order_id}/{status}', 'AdminsController@orderStatus');
 Route::get('/admin/order_details/{order_id}', 'AdminsController@orderDetails');
 
+Route::get('/admin/reports', 'AdminsController@reports');
+
 Route::post('/admin/update_profile', 'AdminsController@updateProfile');
 Route::post('/admin/update_password', 'AdminsController@updatePassword');
 

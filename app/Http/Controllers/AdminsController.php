@@ -796,6 +796,7 @@ class AdminsController extends Controller{
 
         return view('admin/order_details')->with(["order"=>$order, "loggedInUser"=>$loggedInUser]);
     }  
+    
     public function orderStatus($order_id, $status){
         $user = Auth::user();
         if(!$user || $user->type != 1){
@@ -820,6 +821,27 @@ class AdminsController extends Controller{
         }    
     }  
 
+    public function reports(){
+    
+        $user = Auth::user();
+        if(!$user || $user->type != 1){
+            Session::flash('error', 'Sorry! You do not have access to this page');
+            return redirect('/login');
+        }
+        $loggedInUser = Admin::join("users", "admins.user_id", "=", "users.id")
+                        ->where("admins.user_id", $user->id)
+                        ->select("admins.*", "users.id as user_id", "users.status as user_status")->first();
+        if($this->checkPermission($loggedInUser, "order_1") == false){
+            Session::flash('error', 'Sorry! you do not have permission to access this feature');
+            return back();
+        }
+        $orders = Order::join("order_details", "orders.id", "=", "order_details.order_id")
+        ->selectRaw("orders.*,  sum(order_details.selling_price * order_details.qty) as total")
+        ->groupBy('orders.id')
+        ->get();
+
+        return view('admin/reports')->with(["orders"=>$orders, "loggedInUser"=>$loggedInUser]);
+    }  
 
     public function updateAdminPassword(Request $request){
 
