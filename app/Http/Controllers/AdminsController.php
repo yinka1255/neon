@@ -126,14 +126,15 @@ class AdminsController extends Controller{
 
     public function checkPermission($loggedInUser, $module){
         $checkPermission = Permission::where("admin_id", $loggedInUser->id)->first();
-        if(count($checkPermission)<1){
-            return false;
-        }
-        if(count($checkPermission)>0 && $checkPermission->$module != "on"){
-            return false;
-        }else{
-            return true;
-        }
+        var_dump($checkPermission);
+        // if(count($checkPermission)<1){
+        //     return false;
+        // }
+        // if(count($checkPermission)>0 && $checkPermission->$module != "on"){
+        //     return false;
+        // }else{
+        //     return true;
+        // }
     }
 
     public function newAdmin(){
