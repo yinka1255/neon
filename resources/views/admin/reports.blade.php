@@ -66,7 +66,7 @@
 						</tr>
 						<tr>
 							<td colspan=2>Total:</td>
-							<td colspan=1>₦{{number_format(sum($products->total))}}</td>
+							<td colspan=1>₦{{number_format($products->total->sum())}}</td>
 						</tr>
 						@endforeach
 					</tbody>
