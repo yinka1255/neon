@@ -641,7 +641,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
               <div class="products">
                 <h3>Featured products</h3><br/>
                 <div class="row multi-row-clearfix">
@@ -668,6 +668,20 @@
               <div class="row">
                 <div class="col-md-2 col-md-offset-5">
                   <a class="btn btn-theme-colored btn-lg btn-circled mt-30" href="{{url('products')}}" style="margin: auto;">View All Products</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="sidebar sidebar-right mt-sm-30">
+                <div class="widget" style="height: 800px; overflow: scroll;">
+                  <h4 class="widget-title">Categories</h4>
+                  <div class="categories">
+                    <ul class="list list-border angle-double-right">
+                      @foreach ($categories as $category)
+                        <li><a href="{{url('category_products/'.$category->id)}}">{{$category->name}}<span> ({{$category->categoryCount}})</span></a></li>
+                      @endforeach
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
