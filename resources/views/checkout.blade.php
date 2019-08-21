@@ -156,7 +156,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="text-right"> <button type="submit" class="btn btn-default">Place Order</button> </div>
+                  <div class="text-right"> <button type="button" onclick="payWithPaystack()" class="btn btn-default">Place Order</button> </div>
                 </div>
               </div>
             </form>
