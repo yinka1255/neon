@@ -77,7 +77,7 @@
               <li><a href="{{url('/about')}}">About us</a>
               </li>
               
-              <li class="active"><a href="{{url('/products')}}">All products</a>
+              <li><a href="{{url('/products')}}">All products</a>
               </li>
               <li><a href="javascript:void(0)">Categories</a>
                 <ul class="dropdown">
