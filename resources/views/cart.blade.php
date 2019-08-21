@@ -197,7 +197,9 @@
                     </tbody>
                   </table>
                   @if(Auth::check())
-                  <a class="btn btn-default" href="{{url('checkout')}}">Proceed to Checkout</a> </div>
+                    @if(Cart::content()->count() > 0)
+                      <a class="btn btn-default" href="{{url('checkout')}}">Proceed to Checkout</a> </div>
+                    @endif
                   @else
                   <a class="btn btn-default" data-toggle="modal" data-target="#loginModal">Login/Create account to checkout</a>
                   @endif
