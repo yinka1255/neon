@@ -53,7 +53,7 @@
 							<td>{{$key + 1}}</td>
 							<td><a href="{{url('admin/order_details/'.$order->id)}}" >{{"#NEON".str_pad($order->id, 5, '0', STR_PAD_LEFT)}}</a></td>
 							<td><a href="{{url('admin/order_details/'.$order->id)}}" >₦{{number_format($order->total)}}</a></td>
-							<td><a href="{{url('admin/order_details/'.$order->id)}}" >{{$order->created_at->format('d M Y')}}</a></td>
+							<td><a href="{{url('admin/order_details/'.$order->id)}}" >{{$order->created_at->format('d, M Y H:i:s')}}</a></td>
 							@if($order->status == 1)
 							<td><a href="{{url('admin/order_details/'.$order->id)}}" ><span class="primary">New</span></a></td>
 							@elseif($order->status == 2)
