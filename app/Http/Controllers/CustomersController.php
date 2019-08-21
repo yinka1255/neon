@@ -71,6 +71,10 @@ class CustomersController extends Controller{
 
     public function profile(){
         $user = Auth::user();
+        $categories = Category::leftjoin("products", "products.category_id", "=", "categories.id")
+        ->selectRaw('categories.*, count(products.category_id) as categoryCount')
+        ->groupBy('categories.id', 'categories.name')
+        ->where("categories.status", 1)->get();
         if(!$user || $user->type != 3){
             Session::flash('error', 'Sorry! You do not have access to this page');
             return redirect('/login');
@@ -79,7 +83,7 @@ class CustomersController extends Controller{
                         ->where("customers.user_id", $user->id)
                         ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
 
-        return view('profile')->with(["loggedInUser"=>$loggedInUser]);
+        return view('profile')->with(["loggedInUser"=>$loggedInUser, "categories"=>$categories]);
     } 
 
     public function updatePassword(Request $request){
@@ -265,82 +269,110 @@ class CustomersController extends Controller{
 
     public function cart(){
         $user = Auth::user();
+        $categories = Category::leftjoin("products", "products.category_id", "=", "categories.id")
+        ->selectRaw('categories.*, count(products.category_id) as categoryCount')
+        ->groupBy('categories.id', 'categories.name')
+        ->where("categories.status", 1)->get();
         if($user){
             $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
             ->where("customers.user_id", $user->id)
             ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
-            return view('cart')->with(["loggedInUser"=>$loggedInUser]);
+            return view('cart')->with(["loggedInUser"=>$loggedInUser, "categories"=>$categories]);
         }else{
-            return view('cart');
+            return view('cart')->with(["categories"=>$categories]);
         }
     }
 
     public function checkout(){
         $user = Auth::user();
+        $categories = Category::leftjoin("products", "products.category_id", "=", "categories.id")
+        ->selectRaw('categories.*, count(products.category_id) as categoryCount')
+        ->groupBy('categories.id', 'categories.name')
+        ->where("categories.status", 1)->get();
         if($user){
             $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
             ->where("customers.user_id", $user->id)
             ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
-            return view('checkout')->with(["loggedInUser"=>$loggedInUser]);
+            return view('checkout')->with(["loggedInUser"=>$loggedInUser, "categories"=>$categories]);
         }else{
-        return view('checkout');
+        return view('checkout')->with(["categories"=>$categories]);
         }
     }
 
     public function about(){
         $user = Auth::user();
+        $categories = Category::leftjoin("products", "products.category_id", "=", "categories.id")
+        ->selectRaw('categories.*, count(products.category_id) as categoryCount')
+        ->groupBy('categories.id', 'categories.name')
+        ->where("categories.status", 1)->get();
         if($user){
             $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
                         ->where("customers.user_id", $user->id)
                         ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
-             return view('/about')->with(["loggedInUser"=>$loggedInUser]);
+             return view('/about')->with(["loggedInUser"=>$loggedInUser, "categories"=>$categories]);
         }else{
-            return view('/about');
+            return view('/about')->with(["categories"=>$categories]);
         }
     }
 
     public function faqs(){
         $user = Auth::user();
+        $categories = Category::leftjoin("products", "products.category_id", "=", "categories.id")
+        ->selectRaw('categories.*, count(products.category_id) as categoryCount')
+        ->groupBy('categories.id', 'categories.name')
+        ->where("categories.status", 1)->get();
         if($user){
             $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
                         ->where("customers.user_id", $user->id)
                         ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
-             return view('/faqs')->with(["loggedInUser"=>$loggedInUser]);
+             return view('/faqs')->with(["loggedInUser"=>$loggedInUser, "categories"=>$categories]);
         }else{
-            return view('/faqs');
+            return view('/faqs')->with(["categories"=>$categories]);
         }
     }
     public function terms(){
         $user = Auth::user();
+        $categories = Category::leftjoin("products", "products.category_id", "=", "categories.id")
+        ->selectRaw('categories.*, count(products.category_id) as categoryCount')
+        ->groupBy('categories.id', 'categories.name')
+        ->where("categories.status", 1)->get();
         if($user){
             $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
                         ->where("customers.user_id", $user->id)
                         ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
-             return view('/terms')->with(["loggedInUser"=>$loggedInUser]);
+             return view('/terms')->with(["loggedInUser"=>$loggedInUser, "categories"=>$categories]);
         }else{
-            return view('/terms');
+            return view('/terms')->with(["categories"=>$categories]);
         }
     }
     public function policy(){
         $user = Auth::user();
+        $categories = Category::leftjoin("products", "products.category_id", "=", "categories.id")
+        ->selectRaw('categories.*, count(products.category_id) as categoryCount')
+        ->groupBy('categories.id', 'categories.name')
+        ->where("categories.status", 1)->get();
         if($user){
             $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
                         ->where("customers.user_id", $user->id)
                         ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
-             return view('/policy')->with(["loggedInUser"=>$loggedInUser]);
+             return view('/policy')->with(["loggedInUser"=>$loggedInUser, "categories"=>$categories]);
         }else{
-            return view('/policy');
+            return view('/policy')->with(["categories"=>$categories]);
         }
     }
     public function contact(){
         $user = Auth::user();
+        $categories = Category::leftjoin("products", "products.category_id", "=", "categories.id")
+        ->selectRaw('categories.*, count(products.category_id) as categoryCount')
+        ->groupBy('categories.id', 'categories.name')
+        ->where("categories.status", 1)->get();
         if($user){
             $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
                         ->where("customers.user_id", $user->id)
                         ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
-             return view('/contact')->with(["loggedInUser"=>$loggedInUser]);
+             return view('/contact')->with(["loggedInUser"=>$loggedInUser, "categories"=>$categories]);
         }else{
-            return view('/contact');
+            return view('/contact')->with(["categories"=>$categories]);
         }
     }
 
