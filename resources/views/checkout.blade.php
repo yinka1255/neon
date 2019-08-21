@@ -275,7 +275,7 @@
             var name = $("#name").val();
             var email = $("#email").val();
             var phone = $("#phone").val();
-            var amount = <?php echo number_format(str_replace('', '', Cart::subtotal()) + 1500); ?>;
+            var amount = "<?php echo number_format(str_replace('', '', Cart::subtotal()) + 1500); ?>";
             if(phone.length < 1 || name.length < 1 || email.length < 1){
                     getError("Kindly note that all fields are mandatory. These information are needed to generate your e-receipt");
                     return;
