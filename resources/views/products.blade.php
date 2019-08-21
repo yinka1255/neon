@@ -71,6 +71,17 @@
               
               <li class="active"><a href="{{url('/products')}}">All products</a>
               </li>
+              <li><a href="javascript:void(0)">Categories</a>
+                <ul class="dropdown">
+                  <div class="row">
+                    @foreach ($categories as $category)
+                    <div class="col-md-4">
+                      <li><a href="{{url('category_products/'.$category->id)}}">{{$category->name}}<span> ({{$category->categoryCount}})</span></a></li>
+                    </div>
+                    @endforeach
+                  </div>
+                </ul>
+              </li>
               <li><a href="{{url('/faqs')}}">FAQs</a>
               </li>
               <li><a href="{{url('/contact')}}">Contact</a>
@@ -122,6 +133,9 @@
             <div class="col-md-9">
               <div class="products">
                 <div class="row multi-row-clearfix">
+                  @if(count($products) < 1)
+                  <p style="color: brown;">We are currently adding products in this category. Kindly check back later!
+                  @endif
                   @foreach($products as $product)
                   <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
                     <div class="product">

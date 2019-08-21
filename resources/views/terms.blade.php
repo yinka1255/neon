@@ -70,6 +70,17 @@
               
               <li><a href="{{url('/products')}}">All products</a>
               </li>
+              <li><a href="javascript:void(0)">Categories</a>
+                <ul class="dropdown">
+                  <div class="row">
+                    @foreach ($categories as $category)
+                    <div class="col-md-4">
+                      <li><a href="{{url('category_products/'.$category->id)}}">{{$category->name}}<span> ({{$category->categoryCount}})</span></a></li>
+                    </div>
+                    @endforeach
+                  </div>
+                </ul>
+              </li>
               <li><a href="{{url('/faqs')}}">FAQs</a>
               </li>
               <li><a href="{{url('/contact')}}">Contact</a>
