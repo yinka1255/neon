@@ -64,11 +64,11 @@
 							<td><a href="{{url('admin/order_details/'.$order->id)}}" ><span class="danger">Failed</span></a></td>
 							@endif
 						</tr>
+						@endforeach
 						<tr>
 							<td colspan=2>Total:</td>
-							<td colspan=1>₦{{number_format($orders->sum('total'))}}</td>
+							<td colspan=2>₦{{number_format($orders->sum('total'))}}</td>
 						</tr>
-						@endforeach
 					</tbody>
 				</table>
 			</div>
