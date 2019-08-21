@@ -68,7 +68,7 @@
 						<tr>
 							<td></td>
 							<td></td>
-							<td><b style="color: #000;">₦{{number_format($orders->sum('total'))}}</b></td>
+							<td style="color: #000;">₦{{number_format($orders->sum('total'))}}</td>
 							<td></td>
 							<td></td>
 						</tr>
