@@ -45,6 +45,30 @@ class CustomersController extends Controller{
         }
     }
 
+    public function productDetails($product_id){
+        $user = Auth::user();
+        $product = Product::join("inventories", "inventories.product_id", "=", "products.id")
+        ->select("products.*", "inventories.selling_price", "inventories.id as inventory_id")
+        ->where("products.id", $product_id)->first();
+        $categories = Category::leftjoin("products", "products.category_id", "=", "categories.id")
+        ->selectRaw('categories.*, count(products.category_id) as categoryCount')
+        ->groupBy('categories.id', 'categories.name')
+        ->where("categories.status", 1)->get();
+        $products = Product::join("inventories", "inventories.product_id", "=", "products.id")
+        ->select("products.*", "inventories.selling_price", "inventories.id as inventory_id")
+        ->where("products.category_id", $product->category_id)
+        ->orderByRaw('RAND()')->take(8)->get();
+        if($user){
+            $loggedInUser = Customer::join("users", "customers.user_id", "=", "users.id")
+            ->where("customers.user_id", $user->id)
+            ->select("customers.*", "users.id as user_id", "users.status as user_status")->first();
+
+            return view('/product_details')->with(["loggedInUser"=>$loggedInUser, "product"=>$product, "categories"=>$categories, "products"=>$products]);
+        }else{
+            return view('/product_details')->with(["product"=>$product, "categories"=>$categories, "products"=>$products]);
+        }
+    }
+
     public function profile(){
         $user = Auth::user();
         if(!$user || $user->type != 3){

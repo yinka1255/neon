@@ -87,6 +87,7 @@ Route::get('/cart_add/{product_id}', 'CustomersController@cartAdd');
 Route::get('/cart', 'CustomersController@cart');
 Route::get('/checkout', 'CustomersController@checkout');
 Route::get('/remove_cart/{id}', 'CustomersController@removeCart');
+Route::get('/product_details/{id}', 'CustomersController@productDetails');
 
 Route::post('/update_cart', 'CustomersController@updateCart');
 Route::post('/complete_order', 'CustomersController@completeOrder');

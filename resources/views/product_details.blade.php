@@ -10,7 +10,7 @@
 <meta name="author" content="ThemeMascot" />
 
 <!-- Page Title -->
-<title>Neon | Products</title>
+<title>Neon | Product Details</title>
 @include('includes.heads')
 
 </head>
@@ -107,7 +107,7 @@
               <h2 class="title text-center" style="color: #222;">Shop</h2>
               <ol class="breadcrumb text-center text-white mt-10">
                 <li><a href="#" style="color: #222;">Home</a></li>
-                <li class="active text-silver-gray" style="color: #222;">Shop</li>
+                <li class="active text-silver-gray" style="color: #222;">Product detials</li>
               </ol>
             </div>
           </div>
@@ -115,65 +115,75 @@
       </div>
     </section>
 
-    <section class="">
+    <section>
       <div class="container">
         <div class="section-content">
           <div class="row">
-            <div class="col-md-9">
-              <div class="products">
-                <div class="row multi-row-clearfix">
-                  @foreach($products as $product)
-                  <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
-                    <div class="product">
-                      <span class="tag-sale">Sale!</span>
-                      <div class="product-thumb"> <img alt="" src="{{asset('public/images/products/'.$product->image)}}" class="img-responsive img-fullwidth">
-                        <div class="overlay"></div>
-                      </div>
-                      <div class="product-details text-center">
-                        <a  href="{{url('product_details/'.$product->id)}}"><h5 class="product-title">{{$product->name}}</h5></a>
-                        <div class="star-rating" title="Rated 4.50 out of 5"><span data-width="90%">3.50</span></div>
-                        <div class="price">{{--<del><span class="amount">₦{{$product->selling_price}}</span></del>--}}<ins><span class="amount">₦{{number_format($product->selling_price)}}</span></ins></div>
-                        <div class="btn-add-to-cart-wrapper">
-                          <a class="btn btn-default btn-xs btn-add-to-cart" href="{{url('cart_add/'.$product->id)}}">Add To Cart</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  @endforeach
+            <div class="product">
+              <div class="col-md-5">
+                <div class="product-image">
+                  <img src="{{asset('public/images/products/'.$product->image)}}" alt="">
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-2 col-md-offset-5">
-                    {{ $products->links() }}
-               </div>
+              <div class="col-md-7">
+                <div class="product-summary">
+                  <h2 class="product-title">{{$product->name}}</h2>
+                  <div class="product_review">
+                    <ul class="review_text list-inline">
+                      <li>
+                        <div title="Rated 4.50 out of 5" class="star-rating"><span data-width="90%">4.50</span></div>
+                      </li>
+                      {{--
+                      <li><a href="#"><span>2</span>Reviews</a></li>
+                      <li><a href="#">Add reviews</a></li>
+                      --}}
+                    </ul>
+                  </div>
+                  <div class="price"><ins><span class="amount">₦{{number_format($product->selling_price)}}</span></ins> </div>
+                  <div class="short-description">
+                    {!!  \Illuminate\Support\Str::words($product->description, 50,'<a href="#desc" style="color:#1196CC !important;"> Read more</a>') !!}
+                  </div>
+                  <div class="tags"><strong>SKU:</strong> EA{{$product->id}}</div>
+                  <div class="category"><strong>Category:</strong> <a href="#">{{$product->category_name}}</a></div>
+                  <div class="cart-form-wrapper mt-30">
+                      <a class="btn btn-default btn-xs btn-add-to-cart" href="{{url('cart_add/'.$product->id)}}">Add To Cart</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12" id="desc">
+                <div class="horizontal-tab product-tab">
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab1" data-toggle="tab">Description</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane fade in active" id="tab1">
+                      {!! $product->description !!}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="col-md-3">
-              <div class="sidebar sidebar-right mt-sm-30">
-                  <div class="widget">
-                    <h5 class="widget-title">Search box</h5>
-                    <div class="search-form">
-                      <form action="{{url('search_product')}}" method="post">
-                        <div class="input-group">
-                            {{ csrf_field() }}
-                          <input type="text" name="product" placeholder="Search here..." class="form-control search-input">
-                          <span class="input-group-btn">
-                          <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
-                          </span>
-                        </div>
-                      </form>
+            <div class="col-md-12 mt-30">
+              <h4>Related Products</h4>
+              <div class="products related owl-carousel-4col" data-nav="true">
+                @foreach($products as $product)
+                <div class="item">
+                  <div class="product">
+                    <span class="tag-sale">Sale!</span>
+                    <div class="product-thumb"> <img alt="" src="{{asset('public/images/products/'.$product->image)}}" class="img-responsive img-fullwidth">
+                      <div class="overlay"></div>
+                    </div>
+                    <div class="product-details text-center">
+                      <a  href="{{url('product_details/'.$product->id)}}"><h5 class="product-title">{{$product->name}}</h5></a>
+                      <div class="star-rating" title="Rated 4.50 out of 5"><span data-width="90%">3.50</span></div>
+                      <div class="price">{{--<del><span class="amount">₦{{$product->selling_price}}</span></del>--}}<ins><span class="amount">₦{{number_format($product->selling_price)}}</span></ins></div>
+                      <div class="btn-add-to-cart-wrapper">
+                        <a class="btn btn-default btn-xs btn-add-to-cart" href="{{url('cart_add/'.$product->id)}}">Add To Cart</a>
+                      </div>
                     </div>
                   </div>
-                  <div class="widget" style="height: 800px; overflow: scroll;">
-                    <h4 class="widget-title">Categories</h4>
-                    <div class="categories">
-                      <ul class="list list-border angle-double-right">
-                        @foreach ($categories as $category)
-                          <li><a href="{{url('category_products/'.$category->id)}}">{{$category->name}}<span> ({{$category->categoryCount}})</span></a></li>
-                        @endforeach
-                      </ul>
-                    </div>
-                  </div>
+                </div>
+                @endforeach
               </div>
             </div>
           </div>

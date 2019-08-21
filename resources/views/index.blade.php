@@ -653,7 +653,7 @@
                         <div class="overlay"></div>
                       </div>
                       <div class="product-details text-center">
-                        <a  href="{{url('cart_add/'.$product->id)}}"><h5 class="product-title">{{$product->name}}</h5></a>
+                        <a  href="{{url('product_details/'.$product->id)}}"><h5 class="product-title">{{$product->name}}</h5></a>
                         <div class="star-rating" title="Rated 4.50 out of 5"><span data-width="90%">3.50</span></div>
                         <div class="price">{{--<del><span class="amount">₦{{$product->selling_price}}</span></del>--}}<ins><span class="amount">₦{{$product->selling_price}}</span></ins></div>
                         <div class="btn-add-to-cart-wrapper">
